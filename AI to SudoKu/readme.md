@@ -26,3 +26,8 @@ A function to convert the string representation of a puzzle into a dictionary fo
 insight : we can eliminate possible values for a box by looking at its peers.
 
 First things first, let's look at a box and analyze the values that could go in there.
+
+# Strategie 2 : 
+Every unit must contain exactly one occurrence of every number 
+if there is onl one boc in a unit which would allow a certain digit, then that box must be assigned that digit.
+

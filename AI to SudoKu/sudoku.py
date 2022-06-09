@@ -1,4 +1,6 @@
+from ast import For
 import time
+from unicodedata import digit
 # Creation du board : 
 
 rows = 'ABCDEFGHI'
@@ -87,18 +89,40 @@ def eliminate(values):
 
     """
     solved_values = [box for box in values.keys() if len(values[box]) == 1]
-
+    lenn = len(solved_values)
     for box in solved_values:
         digit = values[box]
         for peer in peers[box]:
             values[peer] = values[peer].replace(digit, '')
             print(display(values))
-            time.sleep(0.1)
-
+            #time.sleep(0.01)
+    if len(solved_values)<80:
+        eliminate(values)
     return values
 #print(eliminate(grid_values(test)))
 #print(display(eliminate(grid_values(test))))
 
-print(peers["A1"])
-print(units["A1"])
-print(square_element[0])
+#print(peers["A1"])
+#print(units["A1"])
+#print(square_element[0])
+
+
+# Only one choice 
+
+def only_choice(values):
+    """
+    Finalize all values that are the only choice for a unit.
+    input : Soduku dictionary form.
+    Output : Resulting Sudoko in dictionary form filling in only choices.
+
+    """
+    for unit in unitlist: 
+        for degit in '123456789':
+            dplaces = [box for box in unit if degit in values[box]]
+            if len(dplaces) == 1:
+                values[dplaces[0]] = digit 
+    return values
+
+print(display(only_choice(grid_values(test))))
+
+
