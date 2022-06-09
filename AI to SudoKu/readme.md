@@ -21,3 +21,8 @@ The string will consist of a concatenation of all the readings of the digits in 
 
 # function GRID_Values() :
 A function to convert the string representation of a puzzle into a dictionary form.
+
+# Solve soduku strategie 1 :
+insight : we can eliminate possible values for a box by looking at its peers.
+
+First things first, let's look at a box and analyze the values that could go in there.
